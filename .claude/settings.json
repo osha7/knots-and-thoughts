@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/format-and-lint.sh\"",
+            "timeout": 45
+          }
+        ]
+      }
+    ]
+  },
+
+  "permissions": {
+    "allow": [
+      "Bash(npm run typecheck)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:fix)",
+      "Bash(npm run format)",
+      "Bash(npm run format:check)",
+      "Bash(npm run test:unit)",
+      "Bash(npm run test:unit -- *)",
+      "Bash(npm run test:integration)",
+      "Bash(npm run test:e2e)",
+      "Bash(npm run test:a11y)",
+      "Bash(npm run build)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx prisma generate)",
+      "Bash(npx prisma validate)",
+      "Bash(npx prisma format)",
+      "Bash(npx knip)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(gh pr view*)",
+      "Bash(gh run list*)",
+      "Bash(gh run view*)"
+    ],
+    "ask": [
+      "Bash(npx prisma migrate*)",
+      "Bash(npx prisma db push*)",
+      "Bash(npx prisma studio)",
+      "Bash(npm install*)",
+      "Bash(npm ci)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(gh pr create*)",
+      "Bash(vercel*)",
+      "Bash(neonctl*)"
+    ],
+    "deny": [
+      "Bash(npx prisma migrate reset*)",
+      "Bash(npx prisma db execute*)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)"
+    ]
+  }
+}
