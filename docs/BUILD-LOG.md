@@ -266,7 +266,7 @@ with it.
 
 ## 2026-08-11 — Phase 0: machine transfer and toolchain
 
-**Time:** 1.0h · 2026-08-11 17:00-18:00 CDT · Phase 0
+**Time:** 1.9h · 2026-08-11 17:00-18:51 CDT · Phase 0
 
 *(drafted by Claude at my request, from what actually happened this session)*
 
@@ -286,6 +286,9 @@ code expected.
   and got back "you write the code, I teach," so `CLAUDE.md` is loading from the root.
 - Added time tracking: a `**Time:**` line per entry here, totalled by
   `scripts/time-report.sh`.
+- Worked through the first half of the Server Actions question from the Unresolved list —
+  what crosses the network boundary, and why a Server Action is a public endpoint. Did not
+  yet write it up in `LEARNINGS.md`; deliberately left for next session, from memory.
 
 **What went wrong, and how long it cost:**
 
@@ -336,7 +339,21 @@ so the print store inherits the reasoning rather than rediscovering it.
   any machine that has sat idle — and worth budgeting for, because none of it was in the
   plan.
 
-**Next session:** Server Components versus Server Actions, from the Unresolved list in
-`LEARNINGS.md`, before any further setup. Specifically: what actually crosses the network
-boundary, and the mechanism that makes a Server Action callable directly. Then `BUILD-PLAN`
-§0.1 onward.
+**Next session:** pick up exactly here, in this order.
+
+1. **Write the Server Actions entry in `LEARNINGS.md` from memory, before re-reading
+   anything.** Both Unresolved entries — "Server Components vs. Server Actions" and "why
+   Server Actions are public endpoints" — collapse into one mechanism, and I worked it
+   through this session. Writing it cold is the test of whether it stuck; opening the notes
+   first only tests whether I can copy. If it comes out thin, that is the useful signal, and
+   the answer is in this session's transcript and `ARCHITECTURE.md:375-384`.
+2. **Then the second half of the concept:** what actually requires `"use client"`, and what
+   crosses the network boundary as a result. Not yet covered.
+3. **Then `BUILD-PLAN.md §0.1`** — the first setup step. Nothing before §0.3 has been done;
+   §0.3 (local tooling) is complete and §0.4 (repository) is complete, both out of order
+   because the machine transfer forced it.
+
+**Still open, unchanged:** buy `knotsandthoughts.com`; confirm the series timezone
+(`America/Chicago` is assumed by six documents and wrong here means everyone sees the wrong
+time); name a second Owner. Also unresolved: whether Vercel and GitHub Actions read
+`.tool-versions`, or whether `engines.node` is needed — decide at the CI phase.
